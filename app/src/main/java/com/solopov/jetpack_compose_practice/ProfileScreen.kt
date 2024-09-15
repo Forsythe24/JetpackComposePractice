@@ -70,19 +70,19 @@ fun ProfileScreen() {
             highlights = listOf(
                 ImageWithText(
                     painterResource(id = R.drawable.post_1),
-                    "Love"
+                    "At Hobbit's"
                 ),
                 ImageWithText(
                     painterResource(id = R.drawable.post_2),
-                    "Beach"
+                    "Sunset"
                 ),
                 ImageWithText(
                     painterResource(id = R.drawable.post_3),
-                    "Physique"
+                    "Field"
                 ),
                 ImageWithText(
                     painterResource(id = R.drawable.post_4),
-                    "Wandering"
+                    "Cliff"
                 ),
             )
         )
@@ -105,7 +105,7 @@ fun ProfileScreen() {
         ) {
             selectedTabIndex = it
         }
-        when(selectedTabIndex) {
+        when (selectedTabIndex) {
             0 -> PostSection(
                 posts = listOf(
                     painterResource(id = R.drawable.post_1),
@@ -175,7 +175,7 @@ fun ProfileSection(modifier: Modifier = Modifier) {
                 modifier = Modifier
                     .size(100.dp)
             )
-            ProfileStat(numberText = "22", text = "публикации")
+            ProfileStat(numberText = "4", text = "публикации")
             ProfileStat(numberText = "180", text = "подписчики")
             ProfileStat(numberText = "213", text = "подписки")
         }
@@ -197,8 +197,9 @@ fun RoundImage(
     Image(
         painter = image,
         contentDescription = null,
+        contentScale = ContentScale.Crop,
         modifier = modifier
-            .aspectRatio(1f, matchHeightConstraintsFirst = true)
+//            .aspectRatio(1f, matchHeightConstraintsFirst = true)
             .border(
                 width = 1.dp,
                 color = Color.LightGray,
@@ -265,7 +266,7 @@ fun ProfileDescription(
         )
         Text(
             text = url,
-            color = Color(0xFF2121FF),
+            color = Color(0xFF6E95D6),
             letterSpacing = letterSpacing,
             lineHeight = lineHeight
         )
@@ -300,7 +301,7 @@ fun ProfileDescription(
 
 @Composable
 fun ButtonSection(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     Row(
         horizontalArrangement = Arrangement.SpaceEvenly,
@@ -349,10 +350,11 @@ fun ActionButton(
 @Composable
 fun HighlightSection(
     modifier: Modifier = Modifier,
-    highlights: List<ImageWithText>
+    highlights: List<ImageWithText>,
 ) {
     LazyRow(
         modifier = modifier
+            .padding(start = 12.dp)
     ) {
         items(highlights.size) { index ->
             Column(
